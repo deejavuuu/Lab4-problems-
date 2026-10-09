@@ -22,6 +22,9 @@ public class Student extends Person {
     // Getters
     public String getCne(){return this.cne;}
     public Major getMajor(){return this.major;}
+    public String getFullNameFormatted(){
+        return String.format(this.getSecondName().toUpperCase(),", ",this.getFirstName());
+    }
 
     // Setters
     public void setCne(String newCne){

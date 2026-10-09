@@ -56,5 +56,43 @@ public class Major {
         }
     }
 
+    public Student findStudentByCNE(String cne){
+        for(var i:this.getStudents()){
+            if(i.getCne().equals(cne)){
+                return i;
+            }
+        }
+        return null;
+    }
+
+    public boolean removeStudentByCNE(String cne){
+        int index = -1;
+        for(int i = 0; i<this.getStudentCount(); i++){
+            if(this.getStudents()[i].getCne().equals(cne)){index = i;break;}
+        }
+        if(index == -1){return false;}
+        else{
+            if(index < this.getStudentCount()){
+                Student[] newArr = new Student[this.getStudentCount()-1];
+                System.arraycopy(this.getStudents(),0,newArr,0,index);
+                System.arraycopy(this.getStudents(),index+1,newArr,0,this.getStudentCount()-1);
+                students = newArr;
+                studentCount--;
+            }
+            else{
+                Student[] newArr = new Student[this.getStudentCount()-1];
+                System.arraycopy(this.getStudents(),0,newArr,0,index);
+                students = newArr;
+                studentCount--;
+            }
+            return true;
+
+        }
+    }
+
+    public void getOccupancyRate(){
+        String res = this.getName()+" capacity: "+this.getStudents().length+" Students\nCurrent enrollment: "+this.getStudentCount()+"students\nOccupancy rate = "+(this.getStudentCount()/this.getStudents().length)+"%";
+        System.out.println(res);
+    }
 
 }

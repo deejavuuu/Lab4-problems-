@@ -10,6 +10,12 @@ public class Test {
 
     // Display computer science students
    m2.displayStudents();
+   System.out.println(m2.findStudentByCNE("PP95712")+"\n");
+   System.out.println("Student Count: "+m2.getStudentCount()+"\n");
+   System.out.println(m2.getStudentListAsString()+"\n");
+   m2.getOccupancyRate();
+   System.out.println("\n");
+
     }
 }
 

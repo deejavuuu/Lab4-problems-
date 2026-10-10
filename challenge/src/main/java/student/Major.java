@@ -57,9 +57,11 @@ public class Major {
     }
 
     public Student findStudentByCNE(String cne){
-        for(var i:this.getStudents()){
-            if(i.getCne().equals(cne)){
-                return i;
+        for(int i = 0;i<this.getStudentCount(); i++){
+            if(this.getStudents()[i].getCne().equals(cne)){
+
+                return this.getStudents()[i];
+
             }
         }
         return null;
@@ -91,8 +93,20 @@ public class Major {
     }
 
     public void getOccupancyRate(){
-        String res = this.getName()+" capacity: "+this.getStudents().length+" Students\nCurrent enrollment: "+this.getStudentCount()+"students\nOccupancy rate = "+(this.getStudentCount()/this.getStudents().length)+"%";
+        float rate = (float)(this.getStudentCount())/(float)(this.getStudents().length);
+        String res = String.format(this.getName()+" capacity: "+this.getStudents().length+" Students\nCurrent enrollment: "+this.getStudentCount()+" Students\nOccupancy rate = %.2f",rate*100)+" %";
         System.out.println(res);
+        //here there is still a need to format the float rate to round up to f.02%
+
     }
+    public StringBuilder getStudentListAsString(){
+        StringBuilder res = new StringBuilder(this.getStudents()[0].getId()+". "+this.getStudents()[0].getCne()+" "+this.getStudents()[0].getSecondName()+ " "+this.getStudents()[0].getFirstName());
+        for(int i = 1; i<this.getStudentCount(); i++){
+            res.append("\n").append(this.getStudents()[i].getId()).append(". ").append(this.getStudents()[i].getCne()).append(" ").append(this.getStudents()[i].getSecondName()).append(" ").append(this.getStudents()[i].getFirstName());
+        }
+        return res;
+    }
+
+
 
 }
